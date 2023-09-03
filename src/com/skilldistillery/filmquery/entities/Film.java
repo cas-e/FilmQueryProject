@@ -3,12 +3,6 @@ package com.skilldistillery.filmquery.entities;
 import java.util.List;
 import java.util.Objects;
 
-/*
- * Search should work on both title and description...
- * 
- */
-
-
 
 public class Film {
 	private int id;
@@ -20,17 +14,29 @@ public class Film {
 	private int rentalRate;
 	private int length;
 	private int replacementCost;
-	// rating? enum?
 	
-	private String rating; // just a strin in java
+	private String rating;
 	
-	// special_features set?
-	
-	// THIS ONE IS OPTIONAL
-	private String specialFeatures; // also just a string, 
-	
+	private String readableLanguage;
 	
 	private List<Actor> actors;
+	
+	
+	public String getReadableLanguage() {
+		return readableLanguage;
+	}
+
+	public void setReadableLanguage(String readableLanguage) {
+		this.readableLanguage = readableLanguage;
+	}
+
+	public String getRating() {
+		return rating;
+	}
+
+	public void setRating(String rating) {
+		this.rating = rating;
+	}
 
 	public int getId() {
 		return id;
@@ -57,7 +63,7 @@ public class Film {
 	}
 
 	public String getReleaseYear() {
-		return releaseYear;
+		return releaseYear.split("-")[0];
 	}
 
 	public void setReleaseYear(String releaseYear) {
@@ -137,13 +143,22 @@ public class Film {
 				&& Objects.equals(title, other.title);
 	}
 
-	@Override
+	@Override 
 	public String toString() {
-		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", releaseYear=" + releaseYear
-				+ ", language_id=" + languageId + ", rental_duration=" + rentalDuration + ", rental_rate="
-				+ rentalRate + ", length=" + length + ", replacement_cost=" + replacementCost + ", actors=" + actors
-				+ "]";
+		StringBuilder sb = new StringBuilder();
+		sb.append("Title:       ").append(title).append("\n");
+		sb.append("Year:        ").append(getReleaseYear()).append("\n");
+		sb.append("Rating:      ").append(rating).append("\n");
+		sb.append("Language:    ").append(readableLanguage).append("\n");
+		sb.append("Description: ").append(description).append("\n");
+		sb.append("Starring:    ");
+		for (Actor actor : this.actors) {
+			sb.append("* ").append(actor.getFirstName());
+			sb.append(" ").append(actor.getLastName()).append(" ");
+		}
+		
+		sb.append("\n");
+		
+		return sb.toString();
 	}
-	
-	
 }

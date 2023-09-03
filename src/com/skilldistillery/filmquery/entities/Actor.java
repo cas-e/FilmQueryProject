@@ -9,14 +9,6 @@ public class Actor {
 	private String lastName;
 	private List<Film> films;
 	
-	public List<Film> getFilms() {
-		return films;
-	}
-	public void setFilms(List<Film> films) {
-		this.films = films;
-	}
-
-
 	public Actor() {}
 
 	public Actor(int id, String firstName, String lastName) {
@@ -25,7 +17,13 @@ public class Actor {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
-
+	
+	public List<Film> getFilms() {
+		return films;
+	}
+	public void setFilms(List<Film> films) {
+		this.films = films;
+	}
 	public int getId() {
 		return id;
 	}
