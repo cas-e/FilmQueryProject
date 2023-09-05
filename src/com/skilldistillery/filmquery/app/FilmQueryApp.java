@@ -97,7 +97,7 @@ public class FilmQueryApp {
 		  for (Film film : films) {
 			  System.out.println(film);  
 		  }
-		  System.out.println("Displaying all " + films.size() + " results matching " + term + "\n");
+		  System.out.println("Displaying all " + films.size() + " result(s) matching " + term + "\n");
 	  }
   }
 }
